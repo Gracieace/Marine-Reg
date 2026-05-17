@@ -1,0 +1,7 @@
+
+Fatal error: Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\SampleWeb\config\db.php:30
+Stack trace:
+#0 C:\xampp\htdocs\SampleWeb\config\db.php(30): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\SampleWeb\check_full_schema.php(3): db_connect()
+#2 {main}
+  thrown in C:\xampp\htdocs\SampleWeb\config\db.php on line 30

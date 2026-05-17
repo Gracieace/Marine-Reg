@@ -1,0 +1,468 @@
+/* MMFSL Traditional Institutional ID Layout */
+:root {
+    --id-primary: #ffffff;
+    --id-sidebar: #3b82f6; /* School Blue */
+    --id-navy: #1e293b;
+    --id-gray: #475569;
+    --id-border: #cbd5e1;
+}
+
+.id-card-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    padding: 30px;
+    font-family: 'Inter', sans-serif;
+}
+
+.id-card {
+    width: 330px; 
+    height: 520px; /* Slightly larger for better readability */
+    border-radius: 12px;
+    background: var(--id-primary);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    color: var(--id-navy);
+    border: 1px solid var(--id-border);
+    box-sizing: border-box;
+    display: flex;
+}
+
+/* Sidebar Styling */
+.id-sidebar {
+    width: 70px; /* Consistent width */
+    background: var(--id-sidebar);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+    color: white;
+}
+
+.sidebar-logo {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 30px;
+    background: white;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.sidebar-text {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-weight: 900;
+    font-size: 24px; /* Even larger MMFSL */
+    letter-spacing: 10px;
+}
+
+.sidebar-serial {
+    margin-top: auto;
+    font-size: 9px;
+    font-weight: 900;
+    transform: rotate(-90deg); /* Reverted orientation */
+    white-space: nowrap;
+    padding-bottom: 30px;
+    letter-spacing: 1.5px;
+}
+
+/* Main Content Styling */
+.id-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px; /* Increased padding */
+    text-align: center;
+}
+
+.deped-header {
+    margin-bottom: 20px;
+}
+
+.deped-top {
+    font-size: 7px;
+    font-weight: 700;
+    color: var(--id-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.school-title {
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin: 3px 0;
+    color: var(--id-navy);
+}
+
+.school-address {
+    font-size: 8px;
+    color: var(--id-gray);
+    font-style: italic;
+}
+
+.photo-section {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.photo-box {
+    width: 135px; /* Slightly smaller for better balance */
+    height: 155px;
+    border: 2px solid var(--id-border);
+    padding: 3px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.student-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center; /* Center info vertically */
+}
+
+.name-label {
+    font-size: 19px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--id-navy);
+    line-height: 1;
+}
+
+.lrn-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--id-sidebar);
+}
+
+.grade-label {
+    font-size: 15px;
+    font-weight: 900;
+    margin-top: 5px;
+}
+
+.strand-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--id-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sy-label {
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 5px;
+    color: #64748b;
+}
+
+.qr-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 5px;
+}
+
+.qr-box-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background: white;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.qr-box {
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.qr-label {
+    font-size: 6.5px;
+    font-weight: 900;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* Back Side Styling - Premium Redesign */
+.id-back {
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+}
+
+.back-section-label {
+    font-size: 9px;
+    font-weight: 900;
+    color: var(--id-navy);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+/* Emergency Contact Box */
+.emergency-box {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.contact-item {
+    margin-bottom: 8px;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-label {
+    font-size: 7px;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.contact-val {
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--id-navy);
+    display: block;
+}
+
+/* Rules & Guidelines */
+.rules-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--id-sidebar);
+    margin: 0 auto 12px;
+    border-radius: 2px;
+}
+
+.rules-list {
+    font-size: 8.5px;
+    line-height: 1.5;
+    color: #475569;
+    text-align: left;
+    margin-bottom: 25px;
+    padding-left: 0;
+}
+
+.rules-list p {
+    margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+}
+
+/* Signature Block */
+.signature-wrap {
+    margin-top: auto;
+    padding: 10px 0;
+}
+
+.sig-line {
+    width: 180px;
+    height: 1px;
+    background: var(--id-navy);
+    margin: 0 auto 5px;
+    position: relative;
+    z-index: 2; /* Above signature */
+}
+
+.sig-name {
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--id-navy);
+    position: relative;
+    z-index: 2; /* Above signature */
+}
+
+.sig-title {
+    font-size: 8px;
+    font-weight: 700;
+    color: #64748b;
+    position: relative;
+    z-index: 2; /* Above signature */
+}
+
+/* Back QR Section */
+.back-qr-wrap {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.back-qr-box {
+    width: 85px;
+    height: 85px;
+    padding: 5px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-qr-box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.back-qr-label {
+    font-size: 6px;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+@media print {
+    /* Hide everything on the main page */
+    html, body {
+        height: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+    }
+
+    @page {
+        size: landscape;
+        margin: 0;
+    }
+
+    /* Hide everything but the modal */
+    body > *:not(#previewModal) {
+        display: none !important;
+    }
+
+    /* Isolate and prepare the modal for printing */
+    #previewModal {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: white !important;
+        display: block !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        z-index: 99999 !important;
+        visibility: visible !important;
+    }
+
+    .modal-content {
+        box-shadow: none !important;
+        border: none !important;
+        background: white !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    .modal-header, .modal-footer, .close-modal, .btn-print-group {
+        display: none !important;
+    }
+
+    /* Layout: Center the cards and set side-by-side */
+    .id-card-container {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 15mm !important;
+        height: 100vh !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        visibility: visible !important;
+    }
+
+    /* CR-80 / PVC ID Standard Dimensions (54mm x 85.6mm Portrait) */
+    .id-card {
+        width: 54mm !important;
+        height: 85.6mm !important;
+        min-width: 54mm !important;
+        max-width: 54mm !important;
+        min-height: 85.6mm !important;
+        max-height: 85.6mm !important;
+        border: 0.1mm solid #eee !important;
+        box-shadow: none !important;
+        display: flex !important;
+        visibility: visible !important;
+        border-radius: 3mm !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        overflow: hidden !important;
+    }
+
+    /* Recursively force colors for all inner elements */
+    .id-card * {
+        visibility: visible !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .id-sidebar {
+        width: 12mm !important; /* Fixed width in mm for print */
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    .id-main {
+        padding: 4mm !important;
+    }
+
+    .photo-box {
+        width: 25mm !important;
+        height: 30mm !important;
+    }
+
+    .back-qr-box {
+        width: 12mm !important;
+        height: 12mm !important;
+    }
+
+    .name-label { font-size: 11pt !important; }
+    .lrn-label { font-size: 8pt !important; }
+    .grade-label { font-size: 9pt !important; }
+    .strand-label { font-size: 7pt !important; }
+}
