@@ -35,6 +35,17 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+set_error_handler(function($errno, $errstr, $errfile, $errline) {
+    echo "ERROR [$errno]: $errstr in $errfile on line $errline\n";
+    return false;
+});
+register_shutdown_function(function() {
+    $error = error_get_last();
+    if ($error !== null) {
+        echo "FATAL ERROR: {$error['message']} in {$error['file']} on line {$error['line']}\n";
+    }
+});
+
 
 // Allow hosting-specific overrides (e.g., InfinityFree) without committing secrets
 $hostingOverride = __DIR__ . '/hosting.php';
