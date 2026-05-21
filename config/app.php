@@ -52,7 +52,7 @@ if (!defined('DB_USER'))
 if (!defined('DB_PASS'))
     define('DB_PASS', $_ENV['DB_PASS'] ?? '');
 if (!defined('DB_NAME'))
-    define('DB_NAME', $_ENV['DB_NAME'] ?? 'if0_40321620_sampleweb');
+    define('DB_NAME', $_ENV['DB_NAME'] ?? 'u957255050_db_marine_reg');
 
 // Feature flags
 if (!defined('ENABLE_DATA_CLEAR_UI')) {
