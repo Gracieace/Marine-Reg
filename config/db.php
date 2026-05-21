@@ -8,11 +8,7 @@ if (!function_exists('db_connect')) {
 		$host = defined('DB_HOST') ? DB_HOST : "127.0.0.1";
 		$dbname = defined('DB_NAME') ? DB_NAME : "u957255050_db_marine_reg";
 		$user = defined('DB_USER') ? DB_USER : "u957255050_marine_reg";
-<<<<<<< HEAD
 		$pass = defined('DB_PASS') ? DB_PASS : "M~rphsx7!+/5";
-=======
-		$pass = defined('DB_PASS') ? DB_PASS : "M~rphsx7!+/5o";
->>>>>>> 4784556f13ac78de3b52b4e41417615cba35f20d
 
 		// Environment-specific overrides if constants aren't set (Legacy/Cli support)
 		if (!defined('DB_HOST')) {
@@ -20,16 +16,12 @@ if (!function_exists('db_connect')) {
 				$host = "127.0.0.1";
 				$dbname = "u957255050_db_marine_reg";
 				$user = "u957255050_marine_reg";
-				$pass = "M~rphsx7!+/5o";
+				$pass = "M~rphsx7!+/5";
 			} else {
 				$host = "127.0.0.1";
 				$dbname = "u957255050_db_marine_reg";
 				$user = "u957255050_marine_reg";
-<<<<<<< HEAD
 				$pass = "M~rphsx7!+/5";
-=======
-				$pass = "M~rphsx7!+/5o";
->>>>>>> 4784556f13ac78de3b52b4e41417615cba35f20d
 			}
 		}
 
