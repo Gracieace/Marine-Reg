@@ -1,17 +1,17 @@
 # HTTPS is handled by InfinityFree's proxy (Cloudflare). Do NOT add RewriteRules for HTTPS here.
-RewriteEngine On
+# RewriteEngine On
 
 # Security Headers
-<IfModule mod_headers.c>
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
-    Header set X-XSS-Protection "1; mode=block"
-    Header set Referrer-Policy "no-referrer-when-downgrade"
-    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
-</IfModule>
+# <IfModule mod_headers.c>
+#     Header set X-Content-Type-Options "nosniff"
+#     Header set X-Frame-Options "SAMEORIGIN"
+#     Header set X-XSS-Protection "1; mode=block"
+#     Header set Referrer-Policy "no-referrer-when-downgrade"
+#     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+# </IfModule>
 
 # Default directory index
-DirectoryIndex index.php index.html index.htm
+# DirectoryIndex index.php index.html index.htm
 
 # Prevent directory listing (commented out to prevent 500 errors on strict hosts)
 # <IfModule mod_autoindex.c>
@@ -19,11 +19,11 @@ DirectoryIndex index.php index.html index.htm
 # </IfModule>
 
 # Protect sensitive files
-<FilesMatch "\.(env|log|sql|bak|ini|sh)$">
-    Require all denied
-</FilesMatch>
+# <FilesMatch "\.(env|log|sql|bak|ini|sh)$">
+#     Require all denied
+# </FilesMatch>
 
 # Protect config directory
-<IfModule mod_rewrite.c>
-    RewriteRule ^config/ - [F,L]
-</IfModule>
+# <IfModule mod_rewrite.c>
+#     RewriteRule ^config/ - [F,L]
+# </IfModule>
