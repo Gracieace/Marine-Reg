@@ -85,7 +85,7 @@ if (!headers_sent()) {
     $isLocal = in_array($serverName, ['localhost', '127.0.0.1', '::1']);
     $isHttps = (
         (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
-        ($_SERVER['SERVER_PORT'] == 443) ||
+        ($_SERVER['SERVER_PORT'] == 3306) ||
         (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ||
         (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on')
     );
@@ -109,7 +109,7 @@ if (session_status() === PHP_SESSION_NONE) {
     // Determine if we are on HTTPS
     $isHttps = (
         (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
-        ($_SERVER['SERVER_PORT'] == 443) ||
+        ($_SERVER['SERVER_PORT'] == 3306) ||
         (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ||
         (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on')
     );
