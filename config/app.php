@@ -1,16 +1,16 @@
 <?php
 // Application bootstrap for environment, error handling, headers, and sessions
 
-// Load Composer autoload if present AND complete
-// We check for a known file that Composer eagerly requires — if it's missing,
-// the whole autoload chain will fatal-error with no way to catch it.
+// Load Composer autoload if present
+// Wrapped in try-catch so an incomplete vendor folder (missing files) never causes a 500
 $composerAutoload = __DIR__ . '/../vendor/autoload.php';
-$htmlPurifierFile = __DIR__ . '/../vendor/ezyang/htmlpurifier/library/HTMLPurifier.composer.php';
-if (file_exists($composerAutoload) && file_exists($htmlPurifierFile)) {
-    require_once $composerAutoload;
-} elseif (file_exists($composerAutoload)) {
-    // Vendor folder is incomplete — skip autoload to prevent fatal error
-    error_log('Skipping vendor/autoload.php — missing required file: HTMLPurifier.composer.php');
+if (file_exists($composerAutoload)) {
+    try {
+        require_once $composerAutoload;
+    } catch (\Throwable $e) {
+        // Vendor files are incomplete on server - log and continue without autoload
+        error_log('Composer autoload failed: ' . $e->getMessage());
+    }
 }
 
 // Load environment variables from .env if Dotenv is available
@@ -85,7 +85,7 @@ if (!headers_sent()) {
     $isLocal = in_array($serverName, ['localhost', '127.0.0.1', '::1']);
     $isHttps = (
         (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
-        ($_SERVER['SERVER_PORT'] == 3306) ||
+        ($_SERVER['SERVER_PORT'] == 443) ||
         (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ||
         (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on')
     );
@@ -109,7 +109,7 @@ if (session_status() === PHP_SESSION_NONE) {
     // Determine if we are on HTTPS
     $isHttps = (
         (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
-        ($_SERVER['SERVER_PORT'] == 3306) ||
+        ($_SERVER['SERVER_PORT'] == 443) ||
         (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ||
         (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on')
     );
