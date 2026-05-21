@@ -43,16 +43,20 @@ if (file_exists($hostingOverride)) {
 }
 
 // Database constants from env or defaults
+if (!defined('DB_HOST') || !defined('DB_NAME') || !defined('DB_USER') || !defined('DB_PASS')) {
+    $serverName = $_SERVER['SERVER_NAME'] ?? 'localhost';
+    $isLocalEnv = in_array($serverName, ['localhost', '127.0.0.1', '::1']) || php_sapi_name() === 'cli';
+}
 if (!defined('DB_HOST'))
-    define('DB_HOST', $_ENV['DB_HOST'] ?? '127.0.0.1');
+    define('DB_HOST', $_ENV['DB_HOST'] ?? ($isLocalEnv ? '127.0.0.1' : 'localhost'));
 if (!defined('DB_PORT'))
     define('DB_PORT', (int) ($_ENV['DB_PORT'] ?? 3306));
 if (!defined('DB_USER'))
-    define('DB_USER', $_ENV['DB_USER'] ?? 'root');
+    define('DB_USER', $_ENV['DB_USER'] ?? ($isLocalEnv ? 'root' : 'u957255050_marine_reg'));
 if (!defined('DB_PASS'))
-    define('DB_PASS', $_ENV['DB_PASS'] ?? '');
+    define('DB_PASS', $_ENV['DB_PASS'] ?? ($isLocalEnv ? '' : 'M~rphsx7!+/5'));
 if (!defined('DB_NAME'))
-    define('DB_NAME', $_ENV['DB_NAME'] ?? 'u957255050_db_marine_reg');
+    define('DB_NAME', $_ENV['DB_NAME'] ?? ($isLocalEnv ? 'sampleweb' : 'u957255050_db_marine_reg'));
 
 // Feature flags
 if (!defined('ENABLE_DATA_CLEAR_UI')) {

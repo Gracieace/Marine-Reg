@@ -2,7 +2,7 @@
 // Copy this file to hosting.php and fill in your InfinityFree credentials.
 // Never commit hosting.php to source control.
 
-define('DB_HOST', '127.0.0.1');
+define('DB_HOST', 'localhost');
 define('DB_PORT', 3306);
 define('DB_USER', 'u957255050_marine_reg');
 define('DB_PASS', 'M~rphsx7!+/5');
