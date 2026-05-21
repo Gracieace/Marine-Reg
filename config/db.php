@@ -5,7 +5,7 @@ if (!function_exists('db_connect')) {
 	function db_connect(): PDO
 	{
 		// Use global constants if defined (from app.php/hosting.php), otherwise fallback to environment-specific defaults
-		$host = defined('DB_HOST') ? DB_HOST : "localhost";
+		$host = defined('DB_HOST') ? DB_HOST : "127.0.0.1";
 		$dbname = defined('DB_NAME') ? DB_NAME : "u957255050_db_marine_reg";
 		$user = defined('DB_USER') ? DB_USER : "u957255050_marine_reg";
 		$pass = defined('DB_PASS') ? DB_PASS : "M~rphsx7!+/5";
@@ -13,12 +13,12 @@ if (!function_exists('db_connect')) {
 		// Environment-specific overrides if constants aren't set (Legacy/Cli support)
 		if (!defined('DB_HOST')) {
 			if (php_sapi_name() === 'cli' || (isset($_SERVER['SERVER_NAME']) && ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === '127.0.0.1'))) {
-				$host = "127.0.0.1";
+				$host = "localhost";
 				$dbname = "sampleweb";
 				$user = "root";
 				$pass = "";
 			} else {
-				$host = "localhost";
+				$host = "127.0.0.1";
 				$dbname = "u957255050_db_marine_reg";
 				$user = "u957255050_marine_reg";
 				$pass = "M~rphsx7!+/5";
