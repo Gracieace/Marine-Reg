@@ -1,16 +1,16 @@
 <?php
 // Application bootstrap for environment, error handling, headers, and sessions
 
-// Load Composer autoload if present
-// Wrapped in try-catch so an incomplete vendor folder (missing files) never causes a 500
+// Load Composer autoload if present AND complete
+// We check for a known file that Composer eagerly requires — if it's missing,
+// the whole autoload chain will fatal-error with no way to catch it.
 $composerAutoload = __DIR__ . '/../vendor/autoload.php';
-if (file_exists($composerAutoload)) {
-    try {
-        require_once $composerAutoload;
-    } catch (\Throwable $e) {
-        // Vendor files are incomplete on server - log and continue without autoload
-        error_log('Composer autoload failed: ' . $e->getMessage());
-    }
+$htmlPurifierFile = __DIR__ . '/../vendor/ezyang/htmlpurifier/library/HTMLPurifier.composer.php';
+if (file_exists($composerAutoload) && file_exists($htmlPurifierFile)) {
+    require_once $composerAutoload;
+} elseif (file_exists($composerAutoload)) {
+    // Vendor folder is incomplete — skip autoload to prevent fatal error
+    error_log('Skipping vendor/autoload.php — missing required file: HTMLPurifier.composer.php');
 }
 
 // Load environment variables from .env if Dotenv is available
