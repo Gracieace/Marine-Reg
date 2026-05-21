@@ -14,9 +14,9 @@ if (!function_exists('db_connect')) {
 		if (!defined('DB_HOST')) {
 			if (php_sapi_name() === 'cli' || (isset($_SERVER['SERVER_NAME']) && ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === '127.0.0.1'))) {
 				$host = "127.0.0.1";
-				$dbname = "sampleweb";
-				$user = "root";
-				$pass = "";
+				$dbname = "u957255050_db_marine_reg";
+				$user = "u957255050_marine_reg";
+				$pass = "M~rphsx7!+/5o";
 			} else {
 				$host = "127.0.0.1";
 				$dbname = "u957255050_db_marine_reg";
