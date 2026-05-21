@@ -42,6 +42,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 register_shutdown_function(function() {
     $error = error_get_last();
     if ($error !== null) {
+        http_response_code(200);
         echo "FATAL ERROR: {$error['message']} in {$error['file']} on line {$error['line']}\n";
     }
 });
