@@ -3,7 +3,14 @@
  * Helper utility for SF Report Exports
  */
 
-require_once __DIR__ . '/../vendor/autoload.php';
+// Load vendor autoload safely - missing files won't crash the app
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    try {
+        require_once __DIR__ . '/../vendor/autoload.php';
+    } catch (\Throwable $e) {
+        error_log('Vendor autoload failed in report_export_helper: ' . $e->getMessage());
+    }
+}
 
 use Dompdf\Dompdf;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;

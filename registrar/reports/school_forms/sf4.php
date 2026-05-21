@@ -300,7 +300,8 @@ function handleImport($pdo, $file, $school_year, $month)
 function handleExport($data, $format, $report_type, $school_year, $month)
 {
     if ($format === 'pdf') {
-        require_once __DIR__ . '/../../../vendor/autoload.php';
+        if (file_exists(__DIR__ . '/../../../vendor/autoload.php')) {
+            try { require_once __DIR__ . '/../../../vendor/autoload.php'; } catch (\Throwable $e) { error_log('Vendor autoload failed: ' . $e->getMessage()); }
         $html = buildSf4ExportHtml($data, $school_year, $month);
 
         $dompdf = new \Dompdf\Dompdf([
@@ -336,7 +337,8 @@ function handleExport($data, $format, $report_type, $school_year, $month)
         }
         fclose($out);
     } elseif ($format === 'xlsx') {
-        require_once __DIR__ . '/../../../vendor/autoload.php';
+        if (file_exists(__DIR__ . '/../../../vendor/autoload.php')) {
+            try { require_once __DIR__ . '/../../../vendor/autoload.php'; } catch (\Throwable $e) { error_log('Vendor autoload failed: ' . $e->getMessage()); }
 
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
