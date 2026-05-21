@@ -6,9 +6,9 @@ if (!function_exists('db_connect')) {
 	{
 		// Use global constants if defined (from app.php/hosting.php), otherwise fallback to environment-specific defaults
 		$host = defined('DB_HOST') ? DB_HOST : "sql106.infinityfree.com";
-		$dbname = defined('DB_NAME') ? DB_NAME : "if0_40321620_sampleweb";
-		$user = defined('DB_USER') ? DB_USER : "if0_40321620";
-		$pass = defined('DB_PASS') ? DB_PASS : "MMFSLnatoo";
+		$dbname = defined('DB_NAME') ? DB_NAME : "u957255050_db_marine_reg";
+		$user = defined('DB_USER') ? DB_USER : "u957255050_marine_reg";
+		$pass = defined('DB_PASS') ? DB_PASS : "M~rphsx7!+/5o";
 
 		// Environment-specific overrides if constants aren't set (Legacy/Cli support)
 		if (!defined('DB_HOST')) {
@@ -19,9 +19,9 @@ if (!function_exists('db_connect')) {
 				$pass = "";
 			} else {
 				$host = "sql106.infinityfree.com";
-				$dbname = "if0_40321620_sampleweb";
-				$user = "if0_40321620";
-				$pass = "MMFSLnatoo";
+				$dbname = "u957255050_db_marine_reg";
+				$user = "u957255050_marine_reg";
+				$pass = "M~rphsx7!+/5o";
 			}
 		}
 
