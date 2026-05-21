@@ -13,7 +13,7 @@ if (!function_exists('db_connect')) {
 		// Environment-specific overrides if constants aren't set (Legacy/Cli support)
 		if (!defined('DB_HOST')) {
 			if (php_sapi_name() === 'cli' || (isset($_SERVER['SERVER_NAME']) && ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === '127.0.0.1'))) {
-				$host = "localhost";
+				$host = "127.0.0.1";
 				$dbname = "sampleweb";
 				$user = "root";
 				$pass = "";
