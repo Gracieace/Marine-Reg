@@ -1,17 +1,16 @@
 <?php
 // Application bootstrap for environment, error handling, headers, and sessions
 
-// Load Composer autoload if present
-// Wrapped in try-catch so an incomplete vendor folder (missing files) never causes a 500
-$composerAutoload = __DIR__ . '/../vendor/autoload.php';
-if (file_exists($composerAutoload)) {
-    try {
-        require_once $composerAutoload;
-    } catch (\Throwable $e) {
-        // Vendor files are incomplete on server - log and continue without autoload
-        error_log('Composer autoload failed: ' . $e->getMessage());
-    }
-}
+// Load Composer autoload if present (COMMENTED OUT FOR DEBUGGING)
+// $composerAutoload = __DIR__ . '/../vendor/autoload.php';
+// if (file_exists($composerAutoload)) {
+//     try {
+//         require_once $composerAutoload;
+//     } catch (\Throwable $e) {
+//         // Vendor files are incomplete on server - log and continue without autoload
+//         error_log('Composer autoload failed: ' . $e->getMessage());
+//     }
+// }
 
 // Load environment variables from .env if Dotenv is available
 if (class_exists('Dotenv\\Dotenv')) {
