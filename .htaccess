@@ -14,12 +14,13 @@ RewriteEngine On
 DirectoryIndex index.php index.html index.htm
 
 # Prevent directory listing
-Options -Indexes
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
 
 # Protect sensitive files
 <FilesMatch "\.(env|log|sql|bak|ini|sh)$">
-    Order Allow,Deny
-    Deny from all
+    Require all denied
 </FilesMatch>
 
 # Protect config directory
