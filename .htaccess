@@ -13,10 +13,10 @@ RewriteEngine On
 # Default directory index
 DirectoryIndex index.php index.html index.htm
 
-# Prevent directory listing
-<IfModule mod_autoindex.c>
-    Options -Indexes
-</IfModule>
+# Prevent directory listing (commented out to prevent 500 errors on strict hosts)
+# <IfModule mod_autoindex.c>
+#     Options -Indexes
+# </IfModule>
 
 # Protect sensitive files
 <FilesMatch "\.(env|log|sql|bak|ini|sh)$">

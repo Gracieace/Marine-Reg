@@ -31,16 +31,11 @@ $APP_DEBUG = filter_var($_ENV['APP_DEBUG'] ?? $_SERVER['APP_DEBUG'] ?? 'false', 
 // Timezone
 date_default_timezone_set($_ENV['APP_TIMEZONE'] ?? 'Asia/Manila');
 
-// Error reporting: never display errors in production
-if ($APP_ENV === 'production' && !$APP_DEBUG) {
-    ini_set('display_errors', '0');
-    ini_set('display_startup_errors', '0');
-    error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
-} else {
-    ini_set('display_errors', '1');
-    ini_set('display_startup_errors', '1');
-    error_reporting(E_ALL);
-}
+// Error reporting: always display errors for debugging 500 error
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 
 // Allow hosting-specific overrides (e.g., InfinityFree) without committing secrets
 $hostingOverride = __DIR__ . '/hosting.php';
@@ -118,14 +113,24 @@ if (session_status() === PHP_SESSION_NONE) {
     $secure = $isHttps || (($_ENV['FORCE_SECURE_COOKIES'] ?? '') === 'true');
 
     $cookieParams = session_get_cookie_params();
-    session_set_cookie_params([
-        'lifetime' => $cookieParams['lifetime'] ?? 0,
-        'path' => $cookieParams['path'] ?? '/',
-        'domain' => $cookieParams['domain'] ?? '',
-        'secure' => $secure,
-        'httponly' => true,
-        'samesite' => 'Lax',
-    ]);
+    if (PHP_VERSION_ID >= 70300) {
+        session_set_cookie_params([
+            'lifetime' => $cookieParams['lifetime'] ?? 0,
+            'path' => $cookieParams['path'] ?? '/',
+            'domain' => $cookieParams['domain'] ?? '',
+            'secure' => $secure,
+            'httponly' => true,
+            'samesite' => 'Lax',
+        ]);
+    } else {
+        session_set_cookie_params(
+            $cookieParams['lifetime'] ?? 0,
+            ($cookieParams['path'] ?? '/') . '; samesite=Lax',
+            $cookieParams['domain'] ?? '',
+            $secure,
+            true
+        );
+    }
 }
 
 // Start session if not started
