@@ -1,8 +1,8 @@
 # Ignore hosting-specific database configuration
 config/hosting.php
 
-# Ignore Composer vendor directory
-/vendor/
+# Vendor is included in repo because Hostinger doesn't run composer install
+# /vendor/
 
 # Ignore environment files
 .env
